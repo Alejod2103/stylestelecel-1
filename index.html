@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DirecTv Argentina | Agente Autorizado</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+    <link rel="icon" type="image/png" href="favicon.ico" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@100..800&display=swap" rel="stylesheet">
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="css/Estilos.css?v=0.20" rel="stylesheet" />
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js'></script>
+
+    <script type="text/javascript" src="js/WOW.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+
+    <script type="text/javascript">
+        new WOW().init();
+        $('document').ready(function() {
+
+
+            $("#FormCompleto").hide();
+            $("#FormCompleto_Secundario").hide();
+            $("#FormCompleto_PopUp").hide();
+
+            //$('#ModalFormulario').modal('show');
+
+            setTimeout(function() {
+                if (getParameterByName("success_3") == "" && getParameterByName("success_2") == "" && getParameterByName("success") == "") {
+                    $('#ModalFormulario').modal('show');
+                }
+
+            }, 12000);
+
+
+            $('.blur').blur(function() {
+                if ($(this).val() == "") {
+                    $(this).val($(this).attr('alt'));
+                    $(this).removeClass("txtNegro")
+                    $(this).addClass("txtGris")
+                    //$(this).css("color", "#000000");
+                }
+            });
+            $('.blur').focus(function() {
+                if ($(this).val() == $(this).attr('alt')) {
+                    $(this).val('');
+                    $(this).removeClass("txtGris")
+                    $(this).addClass("txtNegro")
+                    //$(this).css("color", "#959595");
+                }
+            });
+
+            if (window.matchMedia('(min-width: 768px)').matches) {
+                $(document).ready(function() {
+                    setMaxHeight();
+                });
+            }
+
+
+
+            if (getParameterByName("success") == 1) {
+                $("#FormCompleto").show();
+                $("#Btn_Enviar").prop('disabled', true);
+                setTimeout(function() {
+                    scrollToElement("FormularioContacto");
+                }, 1000); // El retraso se especifica en milisegundos, por lo que 1000 milisegundos equivalen a 1 segundo.
+            }
+
+            if (getParameterByName("success_2") == 1) {
+                $("#FormCompleto_Secundario").show();
+                $("#Btn_Enviar_Secundario").prop('disabled', true);
+                setTimeout(function() {
+                    scrollToElement("FormularioSecundario");
+                }, 1000); // El retraso se especifica en milisegundos, por lo que 1000 milisegundos equivalen a 1 segundo.
+
+            }
+
+            if (getParameterByName("success_3") == 1) {
+                $('#ModalFormulario').modal('show');
+                $("#FormCompleto_PopUp").show();
+                $("#Div_Titulo_PopUp").hide();
+                $("#Div_Nombre_PopUp").hide();
+                $("#Div_Telefono_PopUp").hide();
+                $("#Div_Btn_PopUp").hide();
+            }
+
+
+            $("#FormularioContacto").submit(function(event) {
+                if (this.checkValidity()) {
+                    event.preventDefault();
+
+                    var enviarBtn = $("#Btn_Enviar");
+                    if (enviarBtn.length) {
+                        // Mostrar animación de carga
+                        enviarBtn.html('<i class="fas fa-spinner fa-spin"></i> Enviando...');
+                        enviarBtn.prop("disabled", true); // Deshabilitar el botón mientras se envía el formulario
+
+                        // Ocultar el botón después de un cierto tiempo
+                        setTimeout(function() {
+                            enviarBtn.css("display", "none");
+                        }, 1000); // Por ejemplo, ocultar el botón después de 1 segundo
+
+                        var procesoIframe = $("#procesoIframe");
+                        if (procesoIframe.length) {
+                            $(this).unbind('submit').submit();
+
+                            // Esperar a que la solicitud AJAX se complete
+                            $(document).ajaxComplete(function() {
+                                // Redirección después de que la solicitud AJAX se complete
+                                parent.window.location.href = 'index.html?success=1';
+                            });
+                        }
+                    }
+                }
+            });
+
+            $("#FormularioSecundario").submit(function(event) {
+                if (this.checkValidity()) {
+                    event.preventDefault();
+
+                    var enviarBtn2_Desk = $("#Btn_Enviar_Secundario");
+                    if (enviarBtn2_Desk.length) {
+                        // Mostrar animación de carga
+                        enviarBtn2_Desk.html('<i class="fas fa-spinner fa-spin"></i> Enviando...');
+                        enviarBtn2_Desk.prop("disabled", true); // Deshabilitar el botón mientras se envía el formulario
+                    }
+
+                    var procesoIframe2 = $("#procesoIframe");
+                    if (procesoIframe2.length) {
+                        $(this).unbind('submit').submit();
+
+                        // Esperar a que la solicitud AJAX se complete
+                        $(document).ajaxComplete(function() {
+                            // Redirección después de que la solicitud AJAX se complete
+                            parent.window.location.href = 'index.html?success_2=1';
+                        });
+                    }
+                }
+            });
+
+            $("#FormularioPopUp").submit(function(event) {
+                if (this.checkValidity()) {
+                    event.preventDefault();
+
+                    var enviarBtn3 = $("#Btn_Enviar_PopUp");
+                    if (enviarBtn3.length) {
+                        // Mostrar animación de carga
+                        enviarBtn3.html('<i class="fas fa-spinner fa-spin"></i> Enviando...');
+                        enviarBtn3.prop("disabled", true); // Deshabilitar el botón mientras se envía el formulario
+                    }
+
+                    var procesoIframe3 = $("#procesoIframe_PopUp");
+                    if (procesoIframe3.length) {
+                        $(this).unbind('submit').submit();
+
+                        // Esperar a que la solicitud AJAX se complete
+                        $(document).ajaxComplete(function() {
+                            // Redirección después de que la solicitud AJAX se complete
+                            parent.window.location.href = 'index.html?success_3=1';
+                        });
+                    }
+                }
+            });
+
+
+
+        });
+        $(window).resize(function() {
+            //verificarAnchoPantalla();
+        });
+
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        function setMaxHeight() {
+            var maxHeightDesc = 0;
+            var maxHeightCanales = 0;
+
+            // Recorre todos los elementos con clase AltoPlan
+            $('.AltoPlan').each(function() {
+                // Obtiene la altura de cada elemento y la compara con la altura máxima actual
+                var elementHeight = $(this).height();
+                if (elementHeight > maxHeightCanales) {
+                    maxHeightCanales = elementHeight;
+                }
+            });
+            $('.AltoContenidoPlan').each(function() {
+                // Obtiene la altura de cada elemento y la compara con la altura máxima actual
+                var elementHeight = $(this).height();
+                if (elementHeight > maxHeightDesc) {
+                    maxHeightDesc = elementHeight;
+                }
+            });
+
+            // Establece la altura máxima en todos los elementos con clase AltoPlan
+            $('.AltoPlan').height(maxHeightCanales);
+            $('.AltoContenidoPlan').height(maxHeightDesc);
+        }
+
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                const offset = -136; // Ajuste de altura en píxeles
+                const elementPosition = element.getBoundingClientRect().top + window.scrollY + offset;
+                window.scrollTo({
+                    top: elementPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function AbrirModal() {
+            $('#ModalFormulario').modal('show');
+        }
+    </script>
+
+    <style>
+    </style>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-K45SPX5W');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Meta Pixel Code -->
+    <script>
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '457044076836950');
+        fbq('track', 'PageView');
+    </script>
+
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K45SPX5W"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=457044076836950&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <button type="button" class="btn btn-floating btn-lg d-none d-lg-block" id="BtnWhatsApp">
+        <span><a href="https://api.whatsapp.com/send?phone=5491136513449" target="_blank"><img src="images/Btn_WhatsApp.png" class="IconoWhatsApp" /></a></span>
+    </button>
+    <button type="button" class="btn btn-floating btn-lg d-block d-lg-none" id="BtnTelefono">
+        <span><a href="tel:08102226500" target="_blank"><img src="images/IconoTelefono.png" class="IconoTelefono" /></a></span>
+    </button>
+    <button type="button" class="btn btn-floating btn-lg d-block d-lg-none" id="BtnWhatsApp">
+        <span><a href="https://api.whatsapp.com/send?phone=5491136513449" target="_blank"><img src="images/IconoWhatsApp.png" class="IconoWhatsApp" /></a></span>
+    </button>
+    <div class="sticky-top bg-light">
+        <div class="container-fluid FondoAzul_Header">
+            <div class="row">
+                <div class="col-12 col-lg-11 text-center mt-3 mb-3">
+                    <span class="Blanco Anek SemiBold TextoLineaHeader">
+                        INTERNET + TELEVISIÓN | <span class="Light">Internet sin límites y entretenimiento al mejor precio</span>.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark custom-navbar m-0 p-0">
+            <div class="container-fluid col-12 col-lg-10">
+                <!-- Aplicamos col-lg-10 al contenedor del navbar -->
+                <div class="row">
+                    <div class="col-12 p-2 m-2 p-lg-0 m-lg-0">
+                        <!-- Logo y botón de menú (hamburguesa) -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a class="navbar-brand" href="#"><img src="images/LogoDTVAgente_Blanco.png" class="Logo_Header" alt="DirecTv Colombia" /></a>
+                            <div class="d-block d-md-none text-center" id="TelefonoMobile">
+                                <span class="Anek TextoTelefonoHeader Amarilo SemiBold "><a class="Anek TextoTelefonoHeader Amarilo SemiBold " id="MenuTelefono" href="tel:08102226500">Tel. Ventas<br />0810-222-6500</a>
+                            </div>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Menú -->
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link Blanco Anek Normal TextoMenuHeader MenuActivo" href="#Inicio">INICIO</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link Blanco Anek Normal TextoMenuHeader" href="#Planes">PLANES</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link Blanco Anek Normal TextoMenuHeader" href="#Beneficios">BENEFICIOS</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link Amarillo Anek Bold TextoMenuHeader" data-target-id="Nav_Tel" href="tel:08102226500"><span style="color:#ffffff !important; font-size:20px; font-weight:normal;">¡Llamanos!</span> 0810-222-6500</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </nav>
+        </div>
+
+        <div class="container-fluid m-0 p-0" id="Inicio">
+            <div id="mySlider" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicadores de los slides -->
+                <!--<ol class="carousel-indicators">
+                <li data-bs-target="#mySlider" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#mySlider" data-bs-slide-to="1"></li>
+                <li data-bs-target="#mySlider" data-bs-slide-to="2"></li>
+            </ol>-->
+                <!-- Slides del slider -->
+                <div class="carousel-inner">
+                    <div class="divFormulario">
+                        <div class="RecuadroForm shadow " style="border: solid 0px;">
+                            <div class="row justify-content-center align-items-center m-0 p-0 FondoAzulOscuro" style="border-start-end-radius: 25px; border-start-start-radius: 25px;">
+                                <div class="col-12 text-center mt-3 mb-3" style="border: solid 0px;">
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-12 col-lg-12 text-center">
+                                            <span class="Blanco Anek Bold TextoSubtitulos">
+                                            ¡HACETE CLIENTE!
+                                        </span>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-12 col-lg-12 text-center mt-1">
+                                            <span class="Blanco Anek Bold TextoContenidoChico">
+                                            <a class="Blanco" href="tel:08102226500" target="_blank">0810-222-6500</a>
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center align-items-center m-0 p-0">
+                                <div class="col-12 mt-3 text-center" style="border: solid 0px;">
+                                    <form method="post" id="FormularioContacto" name="FormularioContacto" target="procesoIframe" action="Process_Contacto.php">
+                                        <input type="hidden" name="hdn_Form_1" id="hdn_Form_1" value="1" />
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-12 text-center mt-3" style="border: solid 0px;">
+                                                <label for="txtNombre" class="form-label Negro Anek TextoContenido SemiBold" style="margin-left:0px;">Nombre y apellido*</label>
+                                                <input type="text" class="form-control inputForm Negro Anek TextoForm text-center" id="txtNombre" name="txtNombre" required>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-12 text-center mt-3">
+                                                <label for="TxtTelefono" class="form-label Negro Anek TextoContenido SemiBold" style="margin-left:0px;">Teléfono de contacto*</label>
+                                                <input type="text" class="form-control inputForm Negro Anek TextoForm text-center" id="TxtTelefono" name="TxtTelefono" required>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-12 text-center " style="border: solid 0px;">
+                                                <div class="wow fadeInUp mb-3" id="FormCompleto">
+                                                    <span class="Azul Anek Bold TextoDetalleForm">
+                                                    Muchas gracias, nos pondremos en contacto a la brevedad.
+                                                </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-12 text-center mt-3 mb-3" style="border: solid 0px;">
+                                                <button type="submit" class="btn BtnFormEnviar Anek SemiBold TextoSubtitulos" id="Btn_Enviar">CONTRATAR</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <iframe id="procesoIframe" name="procesoIframe" style="display:none;"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-item active first-slide active">
+                        <div class="row justify-content-center align-items-end " style="height: 100%;">
+                            <div class="col-10 col-lg-10" style="border: solid 0px;">
+                                <div class="row justify-content-center justify-content-lg-start align-items-center">
+                                    <div class="col-12 col-lg-9 text-center mb-5 mt-5 mt-lg-0 d-none d-lg-block" style="border: solid 0px;">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-5 text-center order-2 order-lg-1" style="border: solid 0px;">
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-12 col-lg-12 text-center mt-3 mt-lg-0" style="border: solid 0px;">
+                                                        <span class="Blanco Anek Bold TextoTitulares TextoConSombra">
+                                                        Contratá DIRECTV
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-12 col-lg-12 text-center mt-3" style="border: solid 0px;">
+                                                        <a href="https://api.whatsapp.com/send?phone=5491136513449" class="btn BtnAmarillo_Slide2 Anek SemiBold TextoSubtitulos" target="_blank">PEDILO AHORA</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-lg-7 text-center SeparadorPromo order-1 order-lg-2" style="border: solid 0px;">
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-12 col-lg-11 text-center text-lg-start m-0 p-0" style="border: solid 0px;">
+                                                        <span class="Blanco Anek Bold TextoSubtitulos TextoConSombra">
+                                                        TODOS LOS PARTIDOS DE BOCA EN LA
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-12 col-lg-11 text-center text-lg-start m-0 p-0" style="border: solid 0px;">
+                                                        <span class="Blanco Anek Bold TextoContenido TextoConSombra">
+                                                        -CONMEBOL-
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-12 col-lg-11 text-center text-lg-start m-0 p-0" style="border: solid 0px;">
+                                                        <span class="Blanco Anek Bold TextoTitulares TextoConSombra">
+                                                        SUDAMERICANA
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-12 col-lg-11 text-center text-lg-start m-0 p-0" style="border: solid 0px;">
+                                                        <span class="Blanco Anek Bold TextoSubtitulos TextoConSombra">
+                                                        SE JUEGAN SOLO POR
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-12 col-lg-11 text-center text-lg-start m-0 p-0 mt-2 mt-lg-0" style="border: solid 0px;">
+                                                        <img src="images/Img_SoloEn.png" class="img-fluid" alt="DGO DIRECTV" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-12 d-block d-lg-none m-0 p-0" style="border: solid 0px #000000 !important;">
+                                        <div class="row justify-content-center align-items-center m-0 p-0">
+                                            <div class="col-12 text-center mt-5" style="border: solid 0px #000000 !important;">
+                                                <img src="images/Img_Promo_1_Mobile_Contenido.png" class="img-fluid" alt="DFIBRA internet de fibra óptica." />
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-11 text-center m-0 p-0 mt-4" style="border: solid 0px;">
+                                                <span class="Blanco Anek Bold TextoSubtitulos">
+                                                Contratá DIRECTV
+                                            </span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-11 col-lg-10 text-center mt-3 mb-5" style="border: solid 0px;">
+                                                <a href="javascript:AbrirModal();" class="btn BtnFormEnviar_Chico Anek SemiBold TextoContenido" style="color:#000000 !important;">PEDILO YA</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Controles del slider -->
+                <!--<a class="carousel-control-prev" href="#mySlider" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#mySlider" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </a>-->
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center m-0 p-0 OverFlowHidden Linea_Instalacion">
+            <div class="col-12 col-lg-12  m-0 p-0">
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center m-0 p-0 OverFlowHidden FondoGrisClaro" id="Planes">
+            <div class="col-11 col-lg-12 mb-5 m-0 p-0 mt-0 mt-lg-5">
+                <div class="row justify-content-center align-items-center mt-0 mt-lg-5">
+                    <div class="col-12 col-lg-10 mb-5 text-start mt-0 mt-lg-5" style="border: solid 0px;">
+                        <div class="row justify-content-center align-items-center">
+
+                            <div class="col-8 col-lg-4 text-center mt-5 mt-lg-0" style="border: solid 0px;">
+                                <div class="row justify-content-center align-items-center mt-5 mt-lg-0">
+                                    <div class="col-12 col-lg-10 text-center RecuadroTipoInfoPlan shadow" style="border: solid 0px;">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-12 mt-4 mb-4 text-center " style="border: solid 0px;">
+                                                <div class="DivRelativo">
+                                                    <div class="RecuadroIconoTipoPlan"></div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-10 col-lg-12 text-center mt-4" style="border: solid 0px;">
+                                                        <img src="images/Img_Promo_Lite.png" class="img-fluid" alt="DGO DIRECTV" />
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-11 col-lg-10 text-center mt-4" style="border: solid 0px;">
+                                                        <a href="https://api.whatsapp.com/send?phone=5491136513449&text=Plan%20Super%20Lite" class="btn BtnFormEnviar_Chico Anek SemiBold TextoContenido" style="color:#000000 !important;" target="_blank">PEDILO AHORA</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-8 col-lg-4 text-center mt-5 mt-lg-0" style="border: solid 0px;">
+                                <div class="row justify-content-center align-items-center mt-5 mt-lg-0">
+                                    <div class="col-12 col-lg-10 text-center RecuadroTipoInfoPlan shadow" style="border: solid 0px;">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-12 mt-4 mb-4 text-center " style="border: solid 0px;">
+                                                <div class="DivRelativo">
+                                                    <div class="RecuadroIconoTipoPlan"></div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-10 col-lg-12 text-center mt-4" style="border: solid 0px;">
+                                                        <img src="images/Img_Promo_Oro.png" class="img-fluid" alt="DGO DIRECTV" />
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-11 col-lg-10 text-center mt-4" style="border: solid 0px;">
+                                                        <a href="https://api.whatsapp.com/send?phone=5491136513449&text=Plan%20Oro%20HD" class="btn BtnFormEnviar_Chico Anek SemiBold TextoContenido" style="color:#000000 !important;" target="_blank">PEDILO AHORA</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-8 col-lg-4 text-center mt-5 mt-lg-0" style="border: solid 0px;">
+                                <div class="row justify-content-center align-items-center mt-5 mt-lg-0">
+                                    <div class="col-12 col-lg-10 text-center RecuadroTipoInfoPlan shadow" style="border: solid 0px;">
+                                        <div class="row justify-content-center align-items-center">
+                                            <div class="col-12 col-lg-12 mt-4 mb-4 text-center " style="border: solid 0px;">
+                                                <div class="DivRelativo">
+                                                    <div class="RecuadroIconoTipoPlan3"></div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-10 col-lg-12 text-center mt-4" style="border: solid 0px;">
+                                                        <img src="images/Img_Promo_Duo.png" class="img-fluid" alt="DGO DIRECTV" />
+                                                    </div>
+                                                </div>
+                                                <div class="row justify-content-center align-items-center">
+                                                    <div class="col-11 col-lg-10 text-center mt-4" style="border: solid 0px;">
+                                                        <a href="https://api.whatsapp.com/send?phone=5491136513449&text=Plan%20DGO%20DFibra" class="btn BtnFormEnviar_Chico Anek SemiBold TextoContenido" style="color:#000000 !important;" target="_blank">PEDILO AHORA</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+
+        <div class="row justify-content-center align-items-center m-0 p-0 OverFlowHidden FondoAzulForm">
+            <div class="col-12 col-lg-12  m-0 p-0">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-10 col-lg-10 mt-5 mb-5  text-start" style="border: solid 0px;">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-10 col-lg-11 text-center" style="border: solid 0px;">
+                                <span class="Blanco Anek SemiBold TextoTitulares">
+                                ¿Querés DIRECTV en tu casa?
+                            </span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-11 col-lg-12 text-center mt-2" style="border: solid 0px;">
+                                <img src="images/SeparadorPromo_H.png" class="img-fluid" alt="DGO DIRECTV" />
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-10 col-lg-11 text-center mt-4" style="border: solid 0px;">
+                                <span class="Blanco Anek SemiBold TextoSubtitulos">
+                                Adquirilo hoy mismo.
+                            </span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-10 col-lg-6 text-center mt-3" style="border: solid 0px;">
+                                <span class="Blanco Anek Normal TextoContenido">
+                                Llená el siguiente formulario y un agente se pondrá en contacto para asesorarte a la brevedad.
+                            </span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-10 col-lg-11 text-center mt-5" style="border: solid 0px;">
+                                <form method="post" id="FormularioSecundario" name="FormularioSecundario" target="procesoIframe" action="Process_Contacto.php">
+                                    <input type="hidden" name="hdn_Form_2" id="hdn_Form_2" value="2" />
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-12 col-lg-8 text-center" style="border: solid 0px;">
+                                            <div class="row justify-content-center align-items-center">
+                                                <div class="col-12 col-lg-8 text-center" style="border: solid 0px;">
+                                                    <div class="mb-4">
+                                                        <input type="text" class="form-control inputForm Negro Anek TextoForm text-center" id="txtNombre_2" name="txtNombre_2" placeholder="Nombre y apellido*" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center align-items-center">
+                                                <div class="col-12 col-lg-8 text-center" style="border: solid 0px;">
+                                                    <div class="mb-3">
+                                                        <input type="tel" class="form-control inputForm Negro Anek TextoForm text-center" id="TxtTelefono_2" name="TxtTelefono_2" placeholder="Teléfono de contacto*" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-center align-items-center">
+                                                <div class="col-12 col-lg-8 text-center mt-3" style="border: solid 0px;">
+                                                    <div class="mb-3">
+                                                        <button type="submit" class="btn BtnAmarillo_Slide2 Anek Bold" id="Btn_Enviar_Secundario">ENVIAR</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-12 col-lg-12 text-center m-0 p-0" style="border: solid 0px;">
+                                            <div class="wow fadeInUp" id="FormCompleto_Secundario">
+                                                <div class="mb-3 text-center">
+                                                    <div class="wow fadeInUp">
+                                                        <span class="Blanco Anek Bold TextoDetalleForm">
+                                                        Muchas gracias, nos pondremos en contacto a la brevedad.
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center m-0 p-0 OverFlowHidden" id="Beneficios">
+            <div class="col-12 col-lg-12  m-0 p-0">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-10 col-lg-10 mt-5 mb-5 text-start" style="border: solid 0px;">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-11 col-lg-12 text-center" style="border: solid 0px;">
+                                <img src="images/SeparadorPromo_H.png" class="img-fluid" alt="DGO DIRECTV" />
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-lg-10 text-center mt-4" style="border: solid 0px;">
+                                <span class="Negro Anek Normal TextoTitulares">
+                                El mejor entretenimiento<br />
+                                <span class="Bold">EN VIVO</span> y <span class="Bold">ON DEMAND</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-lg-10 text-center mt-3 mb-5" style="border: solid 0px;">
+                                <span class="Negro Anek Normal TextoContenido">
+                                La evolución de la TV online en todas tus pantallas
+                            </span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-lg-10 text-center mt-3" style="border: solid 0px;">
+                                <a href="javascript:AbrirModal();" class="btn BtnFormEnviar_Chico Anek Bold">PEDILO AHORA</a>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-11 col-lg-12 text-center mt-4" style="border: solid 0px;">
+                                <img src="images/SeparadorPromo_H.png" class="img-fluid" alt="DGO DIRECTV" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center m-0 p-0 OverFlowHidden FondoNegro">
+            <div class="col-12 col-lg-10">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-lg-12 mt-4 mb-2 mb-lg-4" style="border: solid 0px;">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-lg-12 text-center" style="border: solid 0px;">
+                                <img src="images/LogoDTVAgente_Blanco.png" class="img-fluid" alt="DIRECTV" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center m-0 p-0 OverFlowHidden FondoNegro">
+            <div class="col-12 col-lg-12  m-0 p-0">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-10 col-lg-10" style="border: solid 0px;">
+                        <div class="row justify-content-center align-items-center ">
+                            <div class="col-12 col-lg-8 text-center m-0 p-0 mt-lg-3 mb-lg-3 d-none d-lg-block" style="border: solid 0px;">
+                                <span class="Anek Bold TextoBtnContratar Blanco">
+                                <a data-bs-toggle="offcanvas" data-bs-target="#ContenedorTerminos" aria-controls="offcanvasBottom" style="cursor:pointer;">TÉRMINOS Y CONDICIONES</a> &emsp;|&emsp; <a data-bs-toggle="offcanvas" data-bs-target="#ContenedorPoliticas" aria-controls="offcanvasBottom" style="cursor:pointer;">POLÍTICAS DE PRIVACIDAD</a>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-lg-6 text-center mb-3 m-0 p-0 d-block d-lg-none" style="border: solid 0px;">
+                                <span class="Anek Bold TextoBtnContratar Blanco">
+                                <a data-bs-toggle="offcanvas" data-bs-target="#ContenedorTerminos" aria-controls="offcanvasBottom" style="cursor:pointer;">TÉRMINOS Y CONDICIONES</a>
+                            </span>
+                            </div>
+                            <div class="col-12 col-lg-6 text-center mb-3 m-0 p-0 d-block d-lg-none" style="border: solid 0px;">
+                                <span class="Anek Bold TextoBtnContratar Blanco">
+                                <a data-bs-toggle="offcanvas" data-bs-target="#ContenedorPoliticas" aria-controls="offcanvasBottom" style="cursor:pointer;">POLÍTICAS DE PRIVACIDAD</a>
+                            </span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-12 col-lg-8 text-center mb-5 m-0 p-0" style="border: solid 0px;">
+                                <span class="Anek Normal TextoContenidoChico Blanco">
+                                2024 | Agente Autorizado - Todos los derechos reservados.
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--PopUp formulario-->
+        <!-- Popup -->
+        <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto</title>
+    <link rel="stylesheet" href="path/to/bootstrap.css"> <!-- Asegúrate de incluir Bootstrap CSS -->
+</head>
+<body>
+    <div class="modal fade" id="ModalFormulario" tabindex="-1" aria-labelledby="ModalFormularioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-centered">
+            <div class="modal-content" style="overflow: hidden !important;">
+                <button type="button" class="btn-close Btn_Cerrar_Modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="modal-body m-0 p-0" style="overflow: hidden !important;">
+                    <div class="row justify-content-center align-items-center m-0 p-0">
+                        <div class="col-12 col-lg-6 text-center m-0 p-0" style="border: solid 0px;">
+                            <img src="images/Promo_PopUp.jpg" class="img-fluid" />
+                        </div>
+                        <div class="col-10 col-lg-6 text-center mt-4 mt-lg-0 mb-4 mb-lg-0" style="border: solid 0px;">
+                            <div class="row justify-content-center align-items-center" id="Div_Titulo_PopUp">
+                                <div class="col-10 col-lg-10 text-center m-0 p-0" style="border: solid 0px;">
+                                    <span class="Anek Bold TextoContenidoChico Blanco">
+                                        ¡Adquirilo hoy mismo!
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center align-items-center m-0 p-0">
+                                <div class="col-12 col-lg-11 text-center m-0 p-0 mt-3" style="border: solid 0px;">
+                                    <form method="post" id="FormularioPopUp" name="FormularioPopUp" target="procesoIframe_PopUp" action="process_contact.php">
+                                        <input type="hidden" name="hdn_Form_3" id="hdn_Form_3" value="3" />
+                                        <div class="row justify-content-center align-items-center" id="Div_Nombre_PopUp">
+                                            <div class="col-12 col-lg-12 text-center" style="border: solid 0px;">
+                                                <div class="mb-3">
+                                                    <input type="text" class="form-control inputFormPopUp Negro Anek TextoForm text-center" id="txtNombre_PopUp" name="txtNombre_PopUp" placeholder="Nombre y apellido*" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center align-items-center" id="Div_Telefono_PopUp">
+                                            <div class="col-12 col-lg-12 text-center" style="border: solid 0px;">
+                                                <div class="mb-3">
+                                                    <input type="tel" class="form-control inputFormPopUp Negro Anek TextoForm text-center" id="TxtTelefono_PopUp" name="TxtTelefono_PopUp" placeholder="Teléfono de contacto*" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center align-items-center animated zoomIn" id="FormCompleto_PopUp">
+                                            <div class="col-12 col-lg-12 text-center m-0 p-0" style="border: solid 0px;">
+                                                <div class="mb-3 text-center">
+                                                    <span class="Blanco Anek Bold TextoDetalleForm">
+                                                        Muchas gracias, nos pondremos en contacto a la brevedad.
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center align-items-center" id="Div_Btn_PopUp">
+                                            <div class="col-12 col-lg-12 text-center" style="border: solid 0px;">
+                                                <div class="text-center">
+                                                    <button type="submit" class="btn BtnAmarillo_Slide2 Anek Bold" id="Btn_Enviar_PopUp">LLAMENME</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <iframe id="procesoIframe_PopUp" name="procesoIframe_PopUp" style="display:none;"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="path/to/bootstrap.bundle.min.js"></script> <!-- Asegúrate de incluir Bootstrap JS -->
+</body>
+</html>
+
+        <!--Legales & Politicas-->
+        <div class="offcanvas offcanvas-bottom shadow PopUpOfcanvasTerminos" tabindex="-1" id="ContenedorTerminos" aria-labelledby="ContenedorTerminos" style="">
+            <div class="offcanvas-header text-center">
+                <h5 class="offcanvas-title " id="PopUpTerminos"></h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body small">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-lg-11 text-start" style="border: solid 0px;">
+                        <span class="Anek Bold TextoContenidoInicio Negro">
+                        TÉRMINOS Y CONDICIONES
+                    </span>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-11 col-lg-11 mt-5 text-start" style="border: solid 0px;">
+                        <span class="Anek Normal TextoContenidoCategorias Negro">
+                        <span class="Bold">Plan Oro HD</span><br /> Promoción válida desde el 01 al 30 de junio de 2022, para clientes nuevos que contraten Plan Postpago Oro HD con modalidad de Pago Automático - PA (pago automático
+                        recurrente mensual con tarjeta habilitada y registrada al efecto). Valor mensual del Plan Oro HD será de S/199.00 - durante los primeros 3 meses. A partir del cuarto mes, o a partir del mes en que se desactivase la modalidad PA
+                        si esto ocurriere antes, el valor mensual del Plan será el precio de lista. Incluye: dos decos HD gratis, costo instalación $0, sujeto a modalidad PA, además HBO GRATIS por los primeros tres meses, sujeto a modalidad PA. A partir
+                        del cuarto mes, o a partir del mes en que se desactivase la modalidad PA si esto ocurriere antes, el valor mensual de HBO será el precio de lista. Adicionalmente todos los clientes con PA que contraten el paquete UNIVERSAL entre
+                        el 01 y el 30 de junio 2022 tienen 3 meses de promoción, consistente en 100% de descuento el primer mes y los dos meses siguientes con el 50% de descuento del precio total del paquete UNIVERSAL. Vencidos los 3 meses de promoción,
+                        el cliente pasará a pagar tarifa regular de dicho paquete. El precio de los paquetes HBO y Universal serán cobrados junto con la facturación normal. Para acceder a todas estas promociones, es requisito que la tarjeta tenga vigencia
+                        de al menos 3 meses posteriores al mes de contratación y que no opere con modalidad de prepago. Los clientes podrán acceder sin costo adicional al servicio DIRECTV GO, con contenido similar al plan contratado. Servicio DIRECTV
+                        es facturado por mes anticipado, por lo que el precio a pagar en la primera boleta podría verse modificado, según el día del mes en que se contrate el respectivo plan. Condiciones de promoción disponibles en https://www.directv.com.ar.
+                        </span>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-11 col-lg-11 mt-5 text-start" style="border: solid 0px;">
+                        <span class="Anek Normal TextoContenidoCategorias Negro">
+                        <span class="Bold">Plan Plata HD</span><br /> Promoción válida desde el 01 al 30 de junio 2022, para clientes nuevos que contraten Plan Postpago Plata HD en con modalidad de Pago Automático - PA (pago automático
+                        recurrente mensual con tarjeta habilitada y registrada al efecto). Valor mensual del Plan Plata HD será de S/160.000 durante los 3 primeros meses. A partir del cuarto mes, o a partir del mes en que se desactivase la modalidad PA
+                        si esto ocurriere antes, el valor mensual del Plan será el precio de lista. Incluye: dos decos HD gratis, costo instalación $0, sujeto a modalidad PA, además HBO GRATIS por los primeros tres meses, sujeto a modalidad PA. A partir
+                        del cuarto mes, o a partir del mes en que se desactivase la modalidad PA si esto ocurriere antes, el valor mensual de HBO será el precio de lista. Adicionalmente todos los clientes con PA que contraten el paquete UNIVERSAL entre
+                        el 01 y el 30 de junio 2022 tienen 3 meses de promoción, consistente en 100% de descuento el primer mes y los dos meses siguientes con el 50% de descuento del precio total del paquete UNIVERSAL. Vencidos los 3 meses de promoción,
+                        el cliente pasará a pagar tarifa regular de dicho paquete. El precio de los paquetes HBO y Universal serán cobrados junto con la facturación normal. Para acceder a todas estas promociones, es requisito que la tarjeta tenga vigencia
+                        de al menos 3 meses posteriores al mes de contratación y que no opere con modalidad de prepago. Los clientes podrán acceder sin costo adicional al servicio DIRECTV GO, con contenido similar al plan contratado. Servicio DIRECTV
+                        es facturado por mes anticipado, por lo que el precio a pagar en la primera boleta podría verse modificado, según el día del mes en que se contrate el respectivo plan. Condiciones de promoción disponibles en https://www.directv.com.ar.
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-bottom shadow PopUpOfcanvasPoliticas" tabindex="-1" id="ContenedorPoliticas" aria-labelledby="ContenedorPoliticas" style="">
+            <div class="offcanvas-header text-center">
+                <h5 class="offcanvas-title " id="PopUpPoliticas"></h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body small">
+
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-12 col-lg-11 text-start" style="border: solid 0px;">
+                        <span class="Anek Bold TextoContenidoInicio Negro">
+                        POLÍTICAS DE PRIVACIDAD
+                    </span>
+                    </div>
+                </div>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-11 col-lg-11 mt-5 text-start" style="border: solid 0px;">
+                        <span class="Anek Normal TextoContenidoCategorias Negro">
+                        La Información de la Compañía en todas sus formas es propiedad de DIRECTV. Es un activo clave de DIRECTV y fundamental para la realización de sus actividades comerciales. La protección y el uso adecuado de la Información de la Compañía es fundamental para la posición competitiva de DIRECTV y para su capacidad de realizar actividades comerciales de manera ética y lícita. La Información de la Compañía debe ser protegida contra pérdida, apropiación ilícita, divulgación inadecuada y otro uso no autorizado.<br />
+                        DIRECTV se compromete con proteger la privacidad de todas las personas cuyos Datos privados tenga en su poder o estén bajo su control.<br />
+                        La Compañía protegerá la información recibida de un Tercero de la misma forma como si fuera Información de la Compañía en la medida requerida por el contrato aplicable con dicho Tercero.<br />
+                        La Información de la Compañía es para uso interno únicamente, a menos que se autorice su publicación externa. El empleo dentro de la Compañía crea un vínculo de confianza con relación a la Información de la Compañía. Los empleados usarán la Información de la Compañía únicamente en relación con las actividades comerciales de la Compañía y se prohíbe su uso más allá del alcance de esta Política.<br />
+                        Todo uso de la Información de la Compañía será en cumplimiento con los requisitos legales aplicables, las normas del sector, las obligaciones contractuales y otras políticas de la Compañía.
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <script>
+            // Asigna la función a los enlaces de navegación
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinksInternos = document.querySelectorAll('.LinkInterno');
+            navLinks.forEach(link => {
+                const targetId = link.getAttribute('data-target-id'); // Obtén el valor del atributo de datos personalizado
+
+                if (targetId !== 'Nav_Tel') {
+                    link.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        const targetId = link.getAttribute('href').substring(1); // Quita el #
+                        scrollToElement(targetId);
+
+                    });
+                }
+
+            });
+            navLinksInternos.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1); // Quita el #
+                    scrollToElement(targetId);
+                });
+            });
+
+
+            // Función para resaltar el enlace activo
+            function highlightActiveLink() {
+                const scrollPosition = window.scrollY;
+
+                navLinks.forEach(link => {
+                    const targetId = link.getAttribute('data-target-id');
+                    const section = document.getElementById(targetId);
+
+                    if (section) {
+                        const sectionTop = section.offsetTop - 140; // Restamos 140px para ajustar al menú fijo
+                        const sectionBottom = sectionTop + section.clientHeight;
+
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    }
+                });
+            }
+
+            // Ejecuta la función para resaltar el enlace activo cuando la página se carga y cuando se desplaza
+            window.addEventListener('load', highlightActiveLink);
+            window.addEventListener('scroll', highlightActiveLink);
+
+
+            // Esta función se ejecutará al desplazarse y resaltará los enlaces activos
+            function resaltarEnlaceActivo() {
+                const secciones = document.querySelectorAll("section"); // Selecciona todas las secciones de la página
+
+                secciones.forEach((seccion) => {
+                    const id = seccion.getAttribute("id");
+                    const enlace = document.querySelector(`.nav-link.link-${id}`);
+
+                    const rect = seccion.getBoundingClientRect();
+
+                    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                        enlace.classList.add("activo");
+                    } else {
+                        enlace.classList.remove("activo");
+                    }
+                });
+            }
+
+            const enlacesMenu = document.querySelectorAll('.nav-link');
+            const navbar = document.querySelector('.navbar');
+            const navbarHeight = navbar.clientHeight;
+
+            function activarEnlaceAutomatico() {
+                const scrollPosition = window.scrollY;
+
+                for (const enlace of enlacesMenu) {
+                    const seccionId = enlace.getAttribute('href').replace('#', '');
+                    const seccion = document.getElementById(seccionId);
+
+                    if (seccion) {
+                        const seccionTop = seccion.offsetTop;
+                        const seccionBottom = seccionTop + seccion.clientHeight;
+
+                        const seccionVisibleTop = seccionTop - navbarHeight - 50;
+                        const seccionVisibleBottom = seccionBottom - navbarHeight;
+
+                        if (scrollPosition >= seccionVisibleTop && scrollPosition < seccionVisibleBottom) {
+                            enlacesMenu.forEach((enlace) => {
+                                enlace.classList.remove('MenuActivo');
+                            });
+
+                            enlace.classList.add('MenuActivo');
+                        }
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', activarEnlaceAutomatico);
+        </script>
+
+</body>
+
+</html>

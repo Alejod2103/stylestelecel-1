@@ -1,0 +1,1222 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+html {
+    scroll-behavior: smooth;
+    font-family: "Anek Latin", sans-serif;
+    font-optical-sizing: auto;
+}
+
+textarea:focus,
+input:focus {
+    outline: none !important;
+}
+
+*:focus {
+    outline: none !important;
+    border-color: inherit !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.OverFlowHidden {
+    overflow: hidden !important;
+}
+
+button {
+    outline: none;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.Anek {
+    font-family: "Anek Latin", sans-serif !important;
+}
+
+.Normal {
+    font-weight: normal;
+}
+
+.Bold {
+    font-weight: bold;
+}
+
+.Extra_Bold {
+    font-weight: bolder;
+}
+
+.SemiBold {
+    font-weight: 600;
+}
+
+.Light {
+    font-weight: 300;
+}
+
+.Blanco {
+    color: #ffffff !important;
+}
+
+.Amarillo {
+    color: #e8c203 !important;
+}
+
+.Negro {
+    color: #191919 !important;
+}
+
+.Violeta {
+    color: #292346 !important;
+}
+
+.Celeste {
+    color: #005992;
+}
+
+.Amarilo {
+    color: #ffc60b !important;
+}
+
+.GrisOscuro {
+    color: #605a88 !important;
+}
+
+.GrisClaro {
+    color: #747474;
+}
+
+.Naranja {
+    color: #ff890d;
+}
+
+.Azul {
+    color: #0173ae !important;
+}
+
+.Turqueza {
+    color: #00aeef !important;
+}
+
+.AzulOscuro {
+    color: #1b2c5d !important;
+}
+
+.FondoGrisClaro {
+    background-color: #f5f5f5;
+}
+
+.FondoGrisOscuro {
+    background-color: #e5e8e9;
+}
+
+.FondoGris3Btns {
+    background-color: #f4f7f9;
+}
+
+.FondoCeleste {
+    background-color: #005992 !important;
+}
+
+.FondoNegro {
+    background-color: #000000;
+}
+
+.FondoAzulOscuro {
+    background-color: #202F56 !important;
+}
+
+.FondoAzulForm {
+    background-color: #154477 !important;
+}
+
+.TextoLineaHeader {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 1px;
+}
+
+.TextoMenuHeader {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 1px;
+}
+
+.TextoForm {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+}
+
+.TextoForm_2 {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 1px;
+}
+
+.TextoDetalleForm {
+    font-size: 11px;
+    line-height: 15px;
+}
+
+.TextoTitulares {
+    font-size: 38px;
+    line-height: 48px;
+}
+
+.TextoSubtitulos {
+    font-size: 26px;
+    line-height: 36px;
+}
+
+.TextoCostoPlan {
+    font-size: 52px;
+    line-height: 56px;
+}
+
+.TextoContenidoPlanes {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.TextoBtnContratar {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.TextoTipoPlan {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.TextoCanalesPremium {
+    font-size: 50px;
+    line-height: 54px;
+}
+
+.TextoContenido {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.TextoContenidoChico {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.TextoChico {
+    font-size: 16px;
+    line-height: 16px;
+}
+
+.TextoTelefonoHeader {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+/*NAV*/
+
+.custom-navbar {
+    background-color: #000000;
+    /* Cambia el color de fondo del navbar según tu preferencia */
+}
+
+.custom-navbar .navbar-brand {
+    color: white;
+    /* Cambia el color del texto del logo */
+}
+
+.custom-navbar .navbar-nav .nav-link {
+    color: white;
+    /* Cambia el color del texto de los enlaces del navbar */
+}
+
+/* Estilos para hacer el navbar sticky cuando se hace scroll */
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Elimina el margen superior del body */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/*Generales*/
+
+.full-height {
+    height: 100vh;
+}
+
+/* Clase personalizada para el primer slide con imagen de fondo */
+
+.first-slide {
+    /*background-image: url('../images/Slider1_v2.webp');*/
+    background-image: url('../images/Slider1.webp');
+    /* Ruta a tu imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 10%;
+    height: 800px;
+}
+
+.SeparadorPromo {
+    background-image: url('../images/SeparadorPromo.png');
+    background-repeat: repeat-y;
+    background-position: 0%;
+}
+
+.second-slide {
+    /*background-image: url('../images/Slider1_v2.webp');*/
+    background-image: url('../images/Slider2.webp');
+    /* Ruta a tu imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    /* Cambia el color del texto para que sea legible en la imagen de fondo */
+    height: 750px;
+}
+
+.modal-content {
+    border-radius: 15px;
+    border: solid 1px #ffffff;
+}
+
+#Politicas.EstilosTexto {
+    font-family: "Anek Latin", sans-serif !important;
+    color: #000000 !important;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+}
+
+#Politicas2.EstilosTexto {
+    font-family: "Anek Latin", sans-serif !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    cursor: pointer;
+}
+
+.line-through-text {
+    text-decoration: line-through;
+    text-decoration-color: #00b0f4;
+    /* Cambia el color de la línea a través del texto */
+}
+
+.Linea_Instalacion {
+    /*background-image: url('../images/Slider1_v2.webp');*/
+    background-image: url('../images/Banner_Instalacion.jpg');
+    /* Ruta a tu imagen de fondo */
+    background-size: cover;
+    background-position: 0% 50%;
+    height: 107px;
+}
+
+.Logo_Header {
+    padding: 10px 0 10px 0;
+}
+
+.FondoAzul_Header {
+    background-color: #0081C1;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.navbar-dark {
+    background-color: #000000;
+}
+
+/* Aplicar efecto de subrayado animado al pasar el mouse y al elemento con la clase MenuActivo */
+
+.navbar-nav .nav-item .nav-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.navbar-nav .nav-item .nav-link::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: #0173ae;
+    transition: width 0.5s ease;
+}
+
+/* Efecto de subrayado al pasar el mouse */
+
+.navbar-nav .nav-item .nav-link:hover::before {
+    width: 97%;
+}
+
+/* Efecto de subrayado para el elemento con la clase MenuActivo */
+
+.navbar-nav .nav-item .nav-link.MenuActivo::before {
+    width: 97%;
+}
+
+.RecuadroForm {
+    background-color: #ffffff;
+    /* Ajusta el valor alfa (0.8) para la transparencia */
+    border-radius: 25px;
+}
+
+.RecuadroTipoPlan {
+    background-color: #ffffff;
+    /* Ajusta el valor alfa (0.8) para la transparencia */
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.RecuadroTipoInfoPlan {
+    background-color: #ffffff;
+    /* Ajusta el valor alfa (0.8) para la transparencia */
+    border-radius: 25px;
+}
+
+.BordeRecuadroTipoPlan {
+    background-color: #005992;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container_2 {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-container label {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    /* Permite que el texto del label crezca para llenar el espacio disponible */
+    white-space: nowrap;
+    /* Evita que el texto se rompa en varias líneas */
+    overflow: hidden;
+    /* Oculta cualquier contenido que desborde del contenedor */
+    text-overflow: ellipsis;
+    /* Agrega puntos suspensivos (...) si el texto es demasiado largo para ajustarse */
+    max-width: 300px;
+    /* Establece el ancho máximo del texto */
+}
+
+.checkbox-container label a {
+    margin-left: 5px;
+    /* Ajusta el espacio entre el texto y el enlace */
+}
+
+.inputForm {
+    background-color: #EDEDED;
+    border-radius: 10px;
+    padding: 15px 25px 15px 25px;
+    border: 2px solid transparent;
+    /* Establece un borde inicial transparente */
+}
+
+.inputForm:focus {
+    border: 2px solid #0173ae;
+    /* Cambia el borde al color deseado cuando el campo está activo */
+}
+
+.form-label {
+    margin-left: 25px;
+    /* Ajusta el valor según el margen que desees */
+}
+
+.BtnForm {
+    background: #0081C1;
+    border-radius: 15px;
+    padding: 10px 0px 10px 0px;
+    color: #ffffff;
+    border: solid 2px #ffffff;
+    width: 90%;
+    transition: background-color 1s, color 1.5s, border-color 1.5s;
+    /* Agregamos la propiedad de transición */
+}
+
+.BtnForm:hover {
+    color: #ffffff;
+}
+
+.BtnForm:focus {
+    color: #ffffff;
+}
+
+.BtnForm:active {
+    color: #ffffff;
+}
+
+.BtnFormEnviar {
+    background: #FFC60B;
+    border-radius: 15px;
+    padding: 10px 50px;
+    color: #202F56;
+    border: solid 3px #FFC60B;
+}
+
+.BtnFormEnviar:hover,
+.BtnForm:focus,
+.BtnForm:active {
+    border: solid 3px #202F56;
+}
+
+.BtnFormEnviar_Chico {
+    background: #FFC60B;
+    border-radius: 15px;
+    padding: 10px 20px;
+    color: #202F56;
+    border: solid 3px #FFC60B;
+}
+
+.BtnFormEnviar_Chico:hover,
+.BtnFormEnviar_Chico:focus,
+.BtnFormEnviar_Chico:active {
+    border: solid 3px #202F56;
+}
+
+.BtnAmarillo_Slide2 {
+    background: #FFC60B;
+    border-radius: 15px;
+    padding: 8px 30px;
+    color: #202F56;
+    border: solid 3px #FFC60B;
+}
+
+.BtnAmarillo_Slide2:hover,
+.BtnForm:focus,
+.BtnForm:active {
+    color: #ffffff;
+}
+
+.BtnContratar {
+    background-color: #ffc60c;
+    border-radius: 25px;
+    padding: 10px 50px;
+    color: #000000;
+    border: solid 2px transparent;
+    transition: background-color 1s, color 1.5s;
+    /* Agregamos la propiedad de transición */
+}
+
+.BtnContratar:hover {
+    background-color: #ffffff;
+    border: solid 2px #ffc60c;
+}
+
+.BtnContratar:focus {
+    outline: none;
+    /* Para quitar el borde predeterminado del enfoque */
+    background-color: #ffffff;
+    border: solid 2px #ffc60c;
+}
+
+.BtnContratar:active {
+    background-color: #ffffff;
+    border: solid 2px #ffc60c;
+}
+
+.contenedor_ConLinea {
+    display: flex;
+    align-items: center;
+    /* Centra verticalmente */
+    width: 100%;
+}
+
+.Icono_Check {
+    float: left;
+    width: 20px !important;
+    margin-right: 5px;
+    /* Espacio entre la imagen y el texto */
+    margin-top: 2px;
+    border: solid 0px;
+}
+
+.texto_ConLinea {
+    white-space: nowrap;
+    /* Asegura que el texto no se envuelva */
+    margin-right: 0.5rem;
+    /* Espacio entre el texto y la línea */
+}
+
+.linea_Texto {
+    flex-grow: 1;
+    /* Hace que la línea ocupe todo el espacio restante */
+    height: 1px;
+    /* Altura de la línea */
+    background-color: #C4C4C4;
+    /* Color de la línea */
+}
+
+.separador {
+    height: 2px;
+    background-color: #0173ae;
+    width: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.zoom-hover {
+    transition: transform 0.2s ease;
+    /* Transición para el agrandamiento */
+}
+
+.zoom-hover:hover {
+    transform: scale(1.1);
+    /* Agrandamos el elemento al 110% */
+    transition: transform 0.2s ease;
+    /* Transición para el agrandamiento */
+}
+
+.DegradePlanes {
+    background: rgb(34, 34, 97);
+    background: linear-gradient( 180deg, rgba(34, 34, 97, 1) 0%, rgba(0, 89, 146, 1) 100%);
+    border-radius: 25px;
+    height: 100%;
+    /* Ajusta la altura según tus necesidades */
+    position: relative;
+    /* Permite posicionar el div interno con respecto a este contenedor */
+}
+
+.RecuadroIconoTipoPlan {
+    background-image: url('../images/Icono_Plan1.png');
+    top: -75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    /* Permite posicionar la imagen dentro del contenedor */
+}
+
+.RecuadroIconoTipoPlan3 {
+    background-image: url('../images/Icono_Plan3.png');
+    top: -75px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 159px;
+    height: 99px;
+    position: absolute;
+    /* Permite posicionar la imagen dentro del contenedor */
+}
+
+.ImgCucarda {
+    background-image: url('../images/Icono_Plan1.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* Ajusta el tamaño de la imagen */
+    background-position: top left;
+    /* Alinea la imagen arriba y a la izquierda */
+    width: 192px;
+    height: 194px;
+    position: absolute;
+    /* Permite posicionar la imagen dentro del contenedor */
+    left: -21px;
+    top: -18px;
+}
+
+.ImgCucarda_2 {
+    background-image: url('../images/Img_Cucarda_v2.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* Ajusta el tamaño de la imagen */
+    background-position: top left;
+    /* Alinea la imagen arriba y a la izquierda */
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    /* Permite posicionar la imagen dentro del contenedor */
+    left: -16px;
+    top: -13px;
+}
+
+.Fondo_InfoPlan {
+    background-image: url('../images/Fondo_InfoPlan.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 0% 50%;
+    /* Alinea la imagen arriba y a la izquierda */
+}
+
+.DivRelativo {
+    position: relative;
+}
+
+.Shadow-Planes {
+    box-shadow: 0px 7px 5px rgba(0, 0, 0, 0.5);
+}
+
+.Redondeado {
+    border-radius: 25px;
+}
+
+.RedondeadoChico {
+    border-radius: 10px;
+}
+
+.FondoCanalesPremium {
+    background: rgb(72, 72, 71);
+    background: radial-gradient(circle, rgba(72, 72, 71, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+.FondoPorQue {
+    background: rgb(2, 91, 149);
+    background: linear-gradient(120deg, rgba(2, 91, 149, 1) 0%, rgba(0, 144, 195, 1) 100%);
+}
+
+.IconoWhatsApp {
+    width: 195px;
+}
+
+.IconoTelefono {
+    width: 61px;
+}
+
+#BtnWhatsApp {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 999 !important;
+}
+
+#BtnTelefono {
+    position: fixed;
+    bottom: 45%;
+    right: -10px;
+    z-index: 999 !important;
+}
+
+.PromoDestacada {
+    transform: scale(1.1);
+    /* Agrandamos el elemento al 110% */
+}
+
+.PromoChica {
+    transform: scale(0.9);
+    /* Agrandamos el elemento al 110% */
+}
+
+.divFormulario {
+    position: absolute;
+    top: 90%;
+    /* Centrar verticalmente */
+    right: 10%;
+    /* Posición desde la izquierda */
+    transform: translateY(-90%);
+    /* Ajuste fino para centrar verticalmente */
+    /* Añade más estilos aquí según sea necesario */
+    z-index: 99;
+    width: 300px;
+}
+
+/*Input Radio*/
+
+.radio {
+    margin: 0.5rem;
+}
+
+.radio input[type=radio] {
+    position: absolute;
+    opacity: 0;
+}
+
+.radio input[type=radio]+.radio-label:before {
+    content: "";
+    background: #f4f4f4;
+    border-radius: 100%;
+    border: 1px solid #005992;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    position: relative;
+    top: -0.2em;
+    margin-right: 1em;
+    vertical-align: top;
+    cursor: pointer;
+    text-align: center;
+    transition: all 250ms ease;
+}
+
+.radio input[type=radio]:checked+.radio-label:before {
+    background-color: #005992;
+    box-shadow: inset 0 0 0 4px #f4f4f4;
+}
+
+.radio input[type=radio]:focus+.radio-label:before {
+    outline: none;
+    border-color: #3197ee;
+}
+
+.radio input[type=radio]:disabled+.radio-label:before {
+    box-shadow: inset 0 0 0 4px #f4f4f4;
+    border-color: #b4b4b4;
+    background: #b4b4b4;
+}
+
+.radio input[type=radio]+.radio-label:empty:before {
+    margin-right: 0;
+}
+
+/*Owl Carrousel*/
+
+.FlechaSlider {
+    display: inline-block;
+    margin-bottom: 3px;
+}
+
+.owl-prev,
+.owl-next {
+    position: absolute;
+    height: 40px;
+    color: inherit;
+    background: none;
+    border: none;
+    z-index: 100;
+}
+
+#DFIBRA_TV>.owl-prev,
+#DFIBRA_TV>.owl-next,
+#DFIBRA_Internet>.owl-prev,
+#DFIBRA_Internet>.owl-next {
+    display: none !important;
+}
+
+.owl-prev {
+    left: -70px;
+    top: 150px;
+    font-size: 40px;
+    line-height: 40px;
+    color: #00aeef;
+}
+
+.owl-next {
+    right: -70px;
+    top: 150px;
+    font-size: 40px;
+    line-height: 40px;
+    color: #00aeef;
+}
+
+.owl-dots {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.owl-dots button.owl-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #c4c4c4;
+    margin: 0 3px;
+}
+
+.owl-dots button.owl-dot.active {
+    background-color: #00aeef;
+}
+
+.owl-dots button.owl-dot:focus {
+    outline: none;
+}
+
+#DFIBRA_DGO,
+#DFIBRA_TV,
+#DFIBRA_Internet {
+    width: 70% !important;
+}
+
+.owl-prev,
+.owl-next {
+    display: none !important;
+}
+
+.owl-dots {
+    display: none !important;
+}
+
+.RecuadroDuracion {
+    background-color: #FFC60B;
+    border-radius: 8px;
+    padding: 2px !important;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
+
+.Btn_Cerrar_Modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+}
+
+.modal-body {
+    padding: 0px;
+    overflow: hidden;
+    background-color: #0081c1;
+}
+
+@media (max-width: 1440px) {
+    #DFIBRA_DGO,
+    #DFIBRA_TV,
+    #DFIBRA_Internet {
+        width: 80% !important;
+    }
+    .first-slide {
+        height: 750px;
+    }
+}
+
+@media (max-width: 1350px) {
+    .divFormulario {
+        right: 1%;
+        /* Posición desde la izquierda */
+    }
+    .first-slide {
+        background-position: 0% 50%;
+    }
+    .second-slide {
+        background-position: 80% 50%;
+    }
+    #DFIBRA_DGO,
+    #DFIBRA_TV,
+    #DFIBRA_Internet {
+        width: 95% !important;
+    }
+}
+
+@media (max-width: 1280px) {
+    .first-slide {
+        background-position: 10% 20%;
+        height: 800px;
+    }
+    .TextoBtnContratar {
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .BtnContratar {
+        padding: 10px 30px;
+    }
+    #DFIBRA_DGO,
+    #DFIBRA_TV,
+    #DFIBRA_Internet {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 1263px) {
+    .full-height {
+        height: 115vh;
+    }
+}
+
+@media (max-width: 1200px) {
+    .owl-dots {
+        display: block !important;
+    }
+}
+
+@media (max-width: 1190px) {
+    #Politicas.EstilosTexto {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .IconoWhatsApp {
+        width: 60px;
+    }
+    .second-slide {
+        background-image: url('../images/Fondo_Mobile.png');
+        /* Ruta a tu imagen de fondo */
+        height: 1200px;
+    }
+    .divFormulario {
+        display: none !important;
+    }
+    .SeparadorPromo {
+        background-image: none;
+    }
+    .first-slide {
+        /*background-image: url('../images/Slider1_v2.webp');*/
+        background-image: url('../images/Img_Promo_1_Mobile.png');
+        /* Ruta a tu imagen de fondo */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        background-color: #1A59CC;
+        height: 900px;
+    }
+    .modal-content {
+        width: calc(100% - 20px);
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    .Btn_Cerrar_Modal {
+        /* Cambiar el color del SVG a blanco */
+        filter: invert(100%);
+    }
+}
+
+@media (max-width: 850px) {}
+
+@media (max-width: 768px) {
+    .Logo_Header {
+        padding: 5px 0;
+        width: 150px;
+    }
+    .checkbox-container label {
+        width: calc(100% - 20px);
+        /* Ajusta el ancho de la etiqueta para pantallas más pequeñas */
+    }
+    .first-slide {
+        background-position: 50% 0%;
+        height: 930px;
+    }
+    .TextoTipoPlan {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .form-container_2 {
+        justify-content: center;
+    }
+    .TextoTelefonoHeader {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .radio input[type=radio]+.radio-label:before {
+        content: "";
+        background: #f4f4f4;
+        border-radius: 100%;
+        border: 1px solid #005992;
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        position: relative;
+        top: -0.2em;
+        margin-right: 1em;
+        vertical-align: top;
+        cursor: pointer;
+        text-align: center;
+        transition: all 250ms ease;
+    }
+    .navbar-expand-lg .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #000000;
+        /* Color de fondo para el menú */
+    }
+    .navbar-toggler {
+        position: absolute !important;
+        /* Usa !important para asegurarte de que se apliquen tus estilos */
+        right: 15px;
+        /* Alinear a la derecha */
+        top: 50%;
+        /* Centrar verticalmente */
+        transform: translateY(-50%);
+        /* Centrar verticalmente */
+    }
+    .TextoLineaHeader {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: .5px;
+    }
+    .separador {
+        width: 70%;
+    }
+    .TextoCostoPlan {
+        font-size: 54px;
+        line-height: 58px;
+    }
+    .TextoCanalesPremium {
+        font-size: 30px;
+        line-height: 34px;
+    }
+    .TextoContenido {
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .TextoContenidoChico {
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .PromoDestacada {
+        transform: scale(1);
+        /* Agrandamos el elemento al 110% */
+    }
+    .PromoChica {
+        transform: scale(1);
+        /* Agrandamos el elemento al 110% */
+    }
+    .TextoConSombra {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        /* Ajusta los valores según tu preferencia */
+    }
+    #DFIBRA_DGO,
+    #DFIBRA_TV,
+    #DFIBRA_Internet {
+        width: 90% !important;
+    }
+    .TextoConSombra {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        /* Ajusta los valores según tu preferencia */
+    }
+    #BtnWhatsApp {
+        bottom: 30%;
+        right: -10px;
+    }
+    .Linea_Instalacion {
+        /*background-image: url('../images/Slider1_v2.webp');*/
+        background-image: url('../images/Banner_Instalacion_Mobile.jpg');
+        /* Ruta a tu imagen de fondo */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0% 50%;
+        background-color: #ffc60b;
+        height: 67px;
+    }
+}
+
+@media (max-width: 500px) {
+    .second-slide {
+        background-position: 80% 50%;
+        height: 1000px;
+    }
+    .TextoForm_2 {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0;
+    }
+    .full-height {
+        height: 820px;
+    }
+    .TextoTitulares {
+        font-size: 30px;
+        line-height: 38px;
+    }
+    .TextoTipoPlan {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .TextoChico {
+        font-size: 14px;
+        line-height: 14px;
+    }
+    #DFIBRA_DGO,
+    #DFIBRA_TV,
+    #DFIBRA_Internet {
+        width: 100% !important;
+    }
+    .RecuadroDuracion {
+        margin-left: 12%;
+    }
+    .first-slide {
+        background-position: 50% 0%;
+        height: 680px;
+    }
+    .BtnFormEnviar {
+        padding: 10px 25px;
+    }
+    .navbar-brand {
+        margin-right: 5px !important;
+    }
+    .Linea_Instalacion {
+        /*background-image: url('../images/Slider1_v2.webp');*/
+        height: 50px;
+    }
+}
+
+@media (max-width: 411px) {
+    .TextoTelefonoHeader {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+@media (max-width: 375px) {
+    .TextoTelefonoHeader {
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: 280px) {
+    .TextoTitulares {
+        font-size: 24px;
+        line-height: 34px;
+    }
+    .TextoSubtitulos {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    #Politicas.EstilosTexto {
+        font-size: 10px;
+        line-height: 14px;
+    }
+    .TextoForm {
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0;
+    }
+    .TextoTipoPlan {
+        font-size: 10px;
+        line-height: 14px;
+    }
+    .second-slide {
+        height: 750px;
+    }
+    .first-slide {
+        background-position: 20% 50%;
+        height: 850px;
+    }
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .Linea_Instalacion {
+        /*background-image: url('../images/Slider1_v2.webp');*/
+        height: 40px;
+    }
+    .first-slide {
+        background-position: 50% 50%;
+        height: 580px;
+    }
+}
